@@ -1,0 +1,12 @@
+import express from "express";
+import async_handler from "express-async-handler";
+import mainController from "../controller/mainController.js";
+import attendanceController from "../controller/attenDanceController.js";
+import timeTableController from "../controller/timeTableController.js";
+import StudentFeesControler from "../controller/StudentFeesControler.js";
+const router = express.Router();
+router.post("/main", async_handler(mainController));
+router.post("/attendance", async_handler(attendanceController));
+router.post("/timetable", async_handler(timeTableController));
+router.post("/fees", async_handler(StudentFeesControler));
+export default router;
