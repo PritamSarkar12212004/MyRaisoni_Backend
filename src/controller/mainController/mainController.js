@@ -5,12 +5,20 @@ const mainController = (req, res) => {
     const url = "https://ghrua.cybervidya.net/api/info/student/fetch";
     const url2 =
       "https://ghrua.cybervidya.net/api/student/dashboard/performance";
+    const url3 =
+      "https://ghrua.cybervidya.net/api/admission/student/assets/get";
+    const url4 =
+      "https://ghrua.cybervidya.net/api/student/dashboard/attendance";
 
     // Headers from your provided request
     const headers = {
       accept: "application/json, text/plain, */*",
       authorization: `GlobalEducation ${token}`,
       uid: toString(id),
+    };
+    const header2 = {
+      accept: "application/json, text/plain, */*",
+      authorization: `GlobalEducation ${token}`,
     };
     try {
       const response = await fetch(url, {
@@ -21,10 +29,26 @@ const mainController = (req, res) => {
         method: "GET",
         headers: headers,
       });
+      const response3 = await fetch(url3, {
+        method: "GET",
+        headers: header2,
+      });
+      const respose4 = await fetch(url4, {
+        method: "GET",
+        headers: header2,
+      });
 
-      if (response.ok || response2.ok) {
+      if (response.ok && response2.ok && response3.ok && respose4.ok) {
         const data = await response.json(); // Parse response as JSON
         const data2 = await response2.json(); // Parse response as JSON
+        const data4 = await respose4.json(); // Parse response as JSON
+
+        const arrayBuffer = await response3.arrayBuffer();
+        const buffer = Buffer.from(arrayBuffer);
+        const base64Image = buffer.toString("base64");
+        const imageType = response3.headers.get("content-type") || "image/jpeg";
+        const image = `data:${imageType};base64,${base64Image}`;
+
         const { data: cgpa } = data2;
         const cgpaData = cgpa;
         // User data
@@ -190,6 +214,8 @@ const mainController = (req, res) => {
             studentAddress: studentAddress,
             fatherDetails: fatherDetails,
             castAndReligion: castAndReligion,
+            image: image,
+            attandance: data4,
           },
           status: 200,
           message: "Success",
