@@ -2,6 +2,7 @@ import axios from "axios";
 
 const ExamDownloadController = async (req, res) => {
   const { token, id } = req.body.data;
+  console.log(id)
 
   axios
     .get(`https://ghrua.cybervidya.net/api/course/report/reg/${id}`, {
