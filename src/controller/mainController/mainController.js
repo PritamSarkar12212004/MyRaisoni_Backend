@@ -9,7 +9,6 @@ const mainController = (req, res) => {
       "https://ghrua.cybervidya.net/api/admission/student/assets/get";
     const url4 =
       "https://ghrua.cybervidya.net/api/student/dashboard/attendance";
-
     // Headers from your provided request
     const headers = {
       accept: "application/json, text/plain, */*",
