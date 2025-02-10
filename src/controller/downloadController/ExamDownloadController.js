@@ -1,17 +1,14 @@
 import axios from "axios";
 
 const ExamDownloadController = async (req, res) => {
-  const { token } = req.body.data;
+  const { token, id } = req.body.data;
 
   axios
-    .get(
-      "https://ghrua.cybervidya.net/api/course/report/reg/GHRUA23011140629",
-      {
-        headers: {
-          Authorization: `GlobalEducation ${token}`,
-        },
-      }
-    )
+    .get(`https://ghrua.cybervidya.net/api/course/report/reg/${id}`, {
+      headers: {
+        Authorization: `GlobalEducation ${token}`,
+      },
+    })
     .then((response) => {
       res.status(200).json({
         data: response.data.data,
