@@ -1,5 +1,3 @@
-import axios from "axios";
-
 const FainanceDownloadController = async (req, res) => {
   const { token } = req.body.data;
   const url = `https://ghrua.cybervidya.net/api/finance/student/fees/student-payment-history/get/3`;
