@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 dotenv.config(); // Load environment variables from .env file
 import express from "express";
+import morgan from "morgan";
 import cors from "cors";
 import connectDB from "./src/database/MongoDataBase.js";
 import MainRoutes from "./src/routes/MainRoutes.js";
@@ -13,7 +14,10 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+//middleware
+app.use(morgan("dev"));
 app.use(cors());
+// routes
 app.use("/", MainRoutes);
 app.use("/download", DownloadRoute);
 app.use("/helper", helperRoutes);
