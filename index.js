@@ -26,12 +26,12 @@ app.use("/event", Event);
 app.use("*", (req, res) => {
   res.status(404).json({ message: "Not found" });
 });
-// connectDB()
-  // .then(() => {
+connectDB()
+  .then(() => {
     app.listen(3000, () => {
       console.log("Server is running on port 3000");
     });
-  // })
-  // .catch((error) => {
-  //   console.error("Error connecting to MongoDB:", error);
-  // });
+  })
+  .catch((error) => {
+    console.error("Error connecting to MongoDB:", error);
+  });
