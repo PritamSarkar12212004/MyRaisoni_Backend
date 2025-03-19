@@ -1,6 +1,6 @@
 const MaintananController = async (req, res) => {
   res.status(200).json({
-    data: false,
+    data: true,
   });
 };
 export default MaintananController;
