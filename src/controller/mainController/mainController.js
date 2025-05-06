@@ -95,13 +95,13 @@ const mainController = (req, res) => {
       let image = null;
 
       // Check if API 3 data is available for image
-      // if (response3.ok) {
-      //   const arrayBuffer = await response3.arrayBuffer();
-      //   const buffer = Buffer.from(arrayBuffer);
-      //   const base64Image = buffer.toString("base64");
-      //   const imageType = response3.headers.get("content-type") || "image/jpeg";
-      //   image = `data:${imageType};base64,${base64Image}`;
-      // }
+      if (response3.ok) {
+        const arrayBuffer = await response3.arrayBuffer();
+        const buffer = Buffer.from(arrayBuffer);
+        const base64Image = buffer.toString("base64");
+        const imageType = response3.headers.get("content-type") || "image/jpeg";
+        image = `data:${imageType};base64,${base64Image}`;
+      }
 
       // If the required data from API 1 is missing, send null
       if (!data1?.data) {
