@@ -89,7 +89,7 @@ const mainController = (req, res) => {
       const data1 = await response1.json();
       const data2 = await response2.json();
       const data4 = await response4.json();
-      console.log(data4)
+      console.log(data4);
 
       let base64Image = null;
       let image = null;
@@ -100,7 +100,11 @@ const mainController = (req, res) => {
         const buffer = Buffer.from(arrayBuffer);
         const base64Image = buffer.toString("base64");
         const imageType = response3.headers.get("content-type") || "image/jpeg";
-        image = `data:${imageType};base64,${base64Image}`;
+        if (!base64Image || base64Image == null) {
+          image = null;
+        } else {
+          image = `data:${imageType};base64,${base64Image}`;
+        }
       }
 
       // If the required data from API 1 is missing, send null
