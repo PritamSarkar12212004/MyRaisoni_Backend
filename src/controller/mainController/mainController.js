@@ -88,7 +88,8 @@ const mainController = (req, res) => {
 
       const data1 = await response1.json();
       const data2 = await response2.json();
-      // const data4 = await response4.json();
+      const data4 = await response4.json();
+      console.log(data4)
 
       let base64Image = null;
       let image = null;
@@ -246,7 +247,7 @@ const mainController = (req, res) => {
           fatherDetails,
           castAndReligion,
           image,
-          // attandance: data4?.data || null, // Check if attendance data exists
+          attandance: data4?.data, // Check if attendance data exists
         },
         status: 200,
         message: "Success",
