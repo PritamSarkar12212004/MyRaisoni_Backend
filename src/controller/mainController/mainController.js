@@ -1,3 +1,5 @@
+import User from "../../models/userModel.js";
+
 const fetchWithTimeout = (url, options, timeout = 5000) => {
   return Promise.race([
     fetch(url, options).then((res) => {
@@ -10,9 +12,13 @@ const fetchWithTimeout = (url, options, timeout = 5000) => {
   ]);
 };
 
-const mainController = (req, res) => {
+const mainController = async (req, res) => {
   const { id, token } = req.body.data;
-
+  const user = await User.findOne({ userId: id });
+  if (!user) {
+    const data = await User.create({ userId: id });
+    await data.save();
+  }
   const fetchUserDetails = async () => {
     const url1 = "https://ghrua.cybervidya.net/api/info/student/fetch";
     const url2 =
