@@ -94,16 +94,20 @@ const mainController = (req, res) => {
       let base64Image = null;
       let image = null;
 
-      // Check if API 3 data is available for image
-      if (response3.ok) {
-        const arrayBuffer = await response3.arrayBuffer();
-        const buffer = Buffer.from(arrayBuffer);
-        const base64Image = buffer.toString("base64");
-        const imageType = response3.headers.get("content-type") || "image/jpeg";
-        if (!base64Image || base64Image == null) {
+      if (response3?.ok) {
+        try {
+          const arrayBuffer = await response3.arrayBuffer();
+          const buffer = Buffer.from(arrayBuffer);
+          const base64Image = buffer.toString("base64");
+          const imageType =
+            response3.headers.get("content-type") || "image/jpeg";
+
+          if (base64Image && base64Image.trim() !== "") {
+            image = `data:${imageType};base64,${base64Image}`;
+          }
+        } catch (err) {
+          console.error("Error processing image:", err.message);
           image = null;
-        } else {
-          image = `data:${imageType};base64,${base64Image}`;
         }
       }
 
