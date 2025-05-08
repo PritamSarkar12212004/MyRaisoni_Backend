@@ -169,84 +169,81 @@ const mainController = async (req, res) => {
       } = data1.data;
 
       const userDetails = {
-        registrationNumber,
-        rollNumber,
-        userFirstName,
-        middleName,
-        lastName,
-        displayName,
-        maritalStatus,
-        dateOfBirth,
-        personalEmail,
-        mobileNumber,
+        registrationNumber: registrationNumber || "",
+        rollNumber: rollNumber || "",
+        userFirstName: userFirstName || "",
+        middleName: middleName || "",
+        lastName: lastName || "",
+        displayName: displayName || "",
+        maritalStatus: maritalStatus || "",
+        dateOfBirth: dateOfBirth || "",
+        personalEmail: personalEmail || "",
+        mobileNumber: mobileNumber || "",
       };
 
       const idDetails = {
-        nationalityId,
-        religionId,
-        casteId,
-        categoryId,
-        branchId,
-        degreeId,
-        schemeId,
-        sessionId,
-        semesterId,
-        yearId,
-        sectionId,
-        admissionBatchId,
-        admissionBatchName,
-        studentGroupId,
+        nationalityId: nationalityId || "",
+        religionId: religionId || "",
+        casteId: casteId || "",
+        categoryId: categoryId || "",
+        branchId: branchId || "",
+        degreeId: degreeId || "",
+        schemeId: schemeId || "",
+        sessionId: sessionId || "",
+        semesterId: semesterId || "",
+        yearId: yearId || "",
+        sectionId: sectionId || "",
+        admissionBatchId: admissionBatchId || "",
+        admissionBatchName: admissionBatchName || "",
+        studentGroupId: studentGroupId || "",
       };
 
       const courseDetails = {
-        dateOfAdmission,
-        branchName,
-        degreeName,
-        sessionName,
-        semesterName,
-        yearName,
-        sectionName,
-        cgpaData: data2.data,
+        dateOfAdmission: dateOfAdmission || "",
+        branchName: branchName || "",
+        degreeName: degreeName || "",
+        sessionName: sessionName || "",
+        semesterName: semesterName || "",
+        yearName: yearName || "",
+        sectionName: sectionName || "",
+        cgpaData: data2?.data || "",
       };
 
       const personalInformation = {
-        domicileStateName: studentPersonalInformation.domicileStateName,
-        motherTongueName: studentPersonalInformation.motherTongueName,
-        birthPlace: studentPersonalInformation.birthPlace,
-        aadhaarNumber: studentPersonalInformation.aadhaarNumber,
-        isPhysicallyChallenged:
-          studentPersonalInformation.isPhysicallyChallenged,
-        bloodGroupName: studentPersonalInformation.bloodGroupName,
+        domicileStateName: studentPersonalInformation?.domicileStateName || "",
+        motherTongueName: studentPersonalInformation?.motherTongueName || "",
+        birthPlace: studentPersonalInformation?.birthPlace || "",
+        aadhaarNumber: studentPersonalInformation?.aadhaarNumber || "",
+        isPhysicallyChallenged: studentPersonalInformation?.isPhysicallyChallenged || "",
+        bloodGroupName: studentPersonalInformation?.bloodGroupName || "",
       };
 
       const studentAddress = {
-        address: studentAddressList[0]?.address || null,
-        pincode: studentAddressList[0]?.pincode || null,
-        addressType: studentAddressList[0]?.addressType || null,
-        stateName: studentAddressList[0]?.stateName || null,
-        districtName: studentAddressList[0]?.districtName || null,
-        cityName: studentAddressList[0]?.cityName || null,
-        countryName: studentAddressList[0]?.countryName || null,
+        address: studentAddressList[0]?.address || "",
+        pincode: studentAddressList[0]?.pincode || "",
+        addressType: studentAddressList[0]?.addressType || "",
+        stateName: studentAddressList[0]?.stateName || "",
+        districtName: studentAddressList[0]?.districtName || "",
+        cityName: studentAddressList[0]?.cityName || "",
+        countryName: studentAddressList[0]?.countryName || "",
       };
 
       const fatherDetails = {
-        fatherParentType: studentParentDetailsList[0]?.parentType || null,
-        fatherFirstName: studentParentDetailsList[0]?.firstName || null,
-        fatherLastName: studentParentDetailsList[0]?.lastName || null,
-        fatherMobileNo: studentParentDetailsList[0]?.mobileNo || null,
-        fatherOccupationName:
-          studentParentDetailsList[0]?.occupationName || null,
-        fatherAnnualIncome: studentParentDetailsList[0]?.annualIncome || null,
-        fatherFullName: studentParentDetailsList[0]?.fullName || null,
-        fatherAnnualIncomeWithExt:
-          studentParentDetailsList[0]?.annualIncomeWithExt || null,
+        fatherParentType: studentParentDetailsList[0]?.parentType || "",
+        fatherFirstName: studentParentDetailsList[0]?.firstName || "",
+        fatherLastName: studentParentDetailsList[0]?.lastName || "",
+        fatherMobileNo: studentParentDetailsList[0]?.mobileNo || "",
+        fatherOccupationName: studentParentDetailsList[0]?.occupationName || "",
+        fatherAnnualIncome: studentParentDetailsList[0]?.annualIncome || "",
+        fatherFullName: studentParentDetailsList[0]?.fullName || "",
+        fatherAnnualIncomeWithExt: studentParentDetailsList[0]?.annualIncomeWithExt || "",
       };
 
       const castAndReligion = {
-        nationalityName,
-        religionName,
-        casteName,
-        categoryName,
+        nationalityName: nationalityName || "",
+        religionName: religionName || "",
+        casteName: casteName || "",
+        categoryName: categoryName || "",
       };
 
       console.log("Data fetched successfully.");
