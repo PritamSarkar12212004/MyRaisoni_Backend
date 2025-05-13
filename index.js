@@ -12,6 +12,8 @@ import resetRouter from "./src/routes/resetRouter.js";
 import Event from "./src/routes/Event.js";
 const app = express();
 
+inject(); // Initialize Vercel Analytics
+// Middleware to parse JSON and URL-encoded data
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
