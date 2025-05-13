@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 dotenv.config(); // Load environment variables from .env file
 import express from "express";
+import { inject } from "@vercel/analytics";
 import morgan from "morgan";
 import cors from "cors";
 import connectDB from "./src/database/MongoDataBase.js";
