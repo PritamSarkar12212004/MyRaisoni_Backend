@@ -3,6 +3,7 @@ const FainanceDownloadController = async (req, res) => {
   const url = `https://ghrua.cybervidya.net/api/finance/student/fees/student-payment-history/get/3`;
 
   const url2 = `https://ghrua.cybervidya.net/api/finance/student/fees/student-payment-history/get/4`;
+  const url3 = `https://ghrua.cybervidya.net/api/finance/student/fees/student-payment-history/get/5`;
 
   const header = {
     accept: "application/json, text/plain, */*",
@@ -17,13 +18,19 @@ const FainanceDownloadController = async (req, res) => {
       method: "GET",
       headers: header,
     });
+    const response3 = await fetch(url3, {
+      method: "GET",
+      headers: header,
+    });
     if (response.ok && response2.ok) {
       const data = await response.json();
       const data2 = await response2.json();
+      const data3 = await response3.json();
       res.status(200).json({
         data: {
           data: data,
           data2: data2,
+          data3: data3,
         },
         status: 200,
         message: "Success",
