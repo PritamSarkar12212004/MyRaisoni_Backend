@@ -28,9 +28,9 @@ const FainanceDownloadController = async (req, res) => {
       const data3 = await response3.json();
       res.status(200).json({
         data: {
-          data: data,
-          data2: data2,
-          data3: data3,
+          data: data ? data : null,
+          data2: data2 ? data2 : null,
+          data3: data3 ? data3 : null,
         },
         status: 200,
         message: "Success",
