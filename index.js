@@ -10,6 +10,7 @@ import DownloadRoute from "./src/routes/DownloadRoute.js";
 import helperRoutes from "./src/routes/helperRoutes.js";
 import resetRouter from "./src/routes/resetRouter.js";
 import Event from "./src/routes/Event.js";
+import OtpRoutes from './src/routes/whatsapp/OtpRoutes.js'
 const app = express();
 
 inject();
@@ -25,6 +26,7 @@ app.use("/download", DownloadRoute);
 app.use("/helper", helperRoutes);
 app.use("/reset", resetRouter);
 app.use("/event", Event);
+app.use("/otp", OtpRoutes);
 app.use("*", (req, res) => {
   res.status(404).json({ message: "Not found" });
 });
