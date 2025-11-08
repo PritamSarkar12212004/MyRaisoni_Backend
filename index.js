@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-dotenv.config(); // Load environment variables from .env file
+dotenv.config();
 import express from "express";
 import { inject } from "@vercel/analytics";
 import morgan from "morgan";
@@ -12,8 +12,7 @@ import resetRouter from "./src/routes/resetRouter.js";
 import Event from "./src/routes/Event.js";
 const app = express();
 
-inject(); // Initialize Vercel Analytics
-// Middleware to parse JSON and URL-encoded data
+inject();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
