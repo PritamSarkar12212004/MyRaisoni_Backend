@@ -12,7 +12,7 @@ const CallOtpController = async (req, res) => {
   try {
     const otp = await OtpGenerator();
     const data = await WApi.post("/api/whatsapp/otp/my_raisoni", {
-      Phone_Number: number,
+      number: phone,
       otp: otp,
       type: "Login",
     });
