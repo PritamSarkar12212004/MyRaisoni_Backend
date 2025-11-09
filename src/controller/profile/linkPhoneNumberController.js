@@ -1,4 +1,4 @@
-import PhoneLinkSchema from "../../models/phoneLinkSchema.js";
+import UserModel from "../../models/userData/UserDataModal.js";
 
 const linkPhoneNumberController = async (req, res) => {
   try {
@@ -9,10 +9,10 @@ const linkPhoneNumberController = async (req, res) => {
         data: null,
       });
     } else {
-      const data = await PhoneLinkSchema.create({
+      const data = await UserModel.create({
         User_phone: phone,
-        User_Password: password,
-        User_Name: userName,
+        User_Passowrd: password,
+        User_Id: userName,
       });
       if (data) {
         res.status(200).json({
