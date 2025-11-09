@@ -3,7 +3,7 @@ import WApi from "../../utils/whatsapp/WApi.js";
 
 const CallOtpController = async (req, res) => {
   const { phone } = req.body;
-  console.log(phone);
+  console.log(phone.phone);
   console.log(typeof phone);
   if (!phone) {
     res.status(404).json({
