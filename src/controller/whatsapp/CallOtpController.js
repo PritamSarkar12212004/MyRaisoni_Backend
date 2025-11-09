@@ -3,6 +3,8 @@ import WApi from "../../utils/whatsapp/WApi.js";
 
 const CallOtpController = async (req, res) => {
   const { phone } = req.body;
+  console.log(phone);
+  console.log(typeof phone);
   if (!phone) {
     res.status(404).json({
       message: "Provide Phone Number",
@@ -12,7 +14,7 @@ const CallOtpController = async (req, res) => {
   try {
     const otp = await OtpGenerator();
     const data = await WApi.post("/api/whatsapp/otp/my_raisoni", {
-      number: String(phone),
+      number: phone,
       otp: otp,
       type: "Login",
     });
