@@ -1,6 +1,7 @@
 import UserModel from "../../models/userData/UserDataModal.js";
 
 const LinkPhoneFetchDataController = async (req, res) => {
+  console.log(req.body);
   try {
     const { phone } = req.body;
 
