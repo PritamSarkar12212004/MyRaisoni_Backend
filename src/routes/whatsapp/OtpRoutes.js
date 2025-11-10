@@ -4,3 +4,4 @@ import CallOtpController from "../../controller/whatsapp/CallOtpController.js";
 const route = express.Router();
 route.post("/myRaisoni", async_handler(CallOtpController));
 export default route;
+    

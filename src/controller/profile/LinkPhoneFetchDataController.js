@@ -3,30 +3,35 @@ import UserModel from "../../models/userData/UserDataModal.js";
 const LinkPhoneFetchDataController = async (req, res) => {
   try {
     const { phone } = req.body;
+
     if (!phone) {
-      res.status(404).json({
-        message: "Please Provide Phone Number Form Frontend",
+      return res.status(400).json({
+        message: "Please provide a phone number.",
+        success: false,
       });
-    } else {
-      const data = await UserModel.find({
-        User_phone: phone,
-      });
-      if (!data) {
-        res.staus(404).json({
-          message: "Phone Number Not Link With User id and Password",
-          data: null,
-        });
-      } else {
-        res.status(200).json({
-          message: "Data Fetch Successfully",
-          data: data,
-        });
-      }
     }
+
+    const data = await UserModel.findOne({ User_phone: phone });
+
+    if (!data) {
+      return res.status(404).json({
+        message: "This phone number is not linked with any user.",
+        success: false,
+      });
+    }
+
+    res.status(200).json({
+      message: "User data fetched successfully.",
+      success: true,
+      data,
+    });
   } catch (error) {
-    res.sattus(404).json({
-      message: "Error From Server Side",
+    console.error("Error in LinkPhoneFetchDataController:", error);
+    res.status(500).json({
+      message: "Server error. Please try again later.",
+      success: false,
     });
   }
 };
+
 export default LinkPhoneFetchDataController;
