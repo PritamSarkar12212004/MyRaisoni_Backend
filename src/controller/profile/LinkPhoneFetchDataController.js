@@ -23,7 +23,7 @@ const LinkPhoneFetchDataController = async (req, res) => {
     res.status(200).json({
       message: "User data fetched successfully.",
       success: true,
-      data,
+      data: data,
     });
   } catch (error) {
     console.error("Error in LinkPhoneFetchDataController:", error);
