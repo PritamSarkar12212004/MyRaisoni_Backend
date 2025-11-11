@@ -13,6 +13,7 @@ const LinkPhoneFetchDataController = async (req, res) => {
     }
 
     const data = await UserModel.findOne({ User_phone: phone });
+    console.log("link Data", data);
 
     if (!data) {
       return res.status(404).json({
