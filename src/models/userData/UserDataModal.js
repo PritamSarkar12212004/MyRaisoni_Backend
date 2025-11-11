@@ -13,6 +13,6 @@ const UserSchema = new mongoose.Schema({
     required: true,
   },
 });
-const UserModel = mongoose.model("UserSchema", UserSchema);
+const UserModel = mongoose.model("UserLinkSchema", UserSchema);
 
 export default UserModel;
