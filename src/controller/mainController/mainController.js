@@ -1,3 +1,4 @@
+import UserModel from "../../models/userData/UserDataModal.js";
 import User from "../../models/userModel.js";
 
 const fetchWithTimeout = (url, options, timeout = 8000) => {
@@ -218,8 +219,19 @@ const mainController = async (req, res) => {
       categoryName,
     };
 
-    console.log("✅ All Data Fetched Successfully");
-
+    const PhoneData = await UserModel.find({
+      User_Id: id,
+    })
+      .then((res) => {
+        if (res) {
+          return true;
+        } else {
+          return false;
+        }
+      })
+      .catch(() => {
+        return false;
+      });
     return res.status(200).json({
       data: {
         userDetails,
@@ -231,6 +243,7 @@ const mainController = async (req, res) => {
         castAndReligion,
         image,
         attandance: attendanceData?.data || null,
+        PhoneLinkData: PhoneData,
       },
       status: 200,
       message: "Success",
