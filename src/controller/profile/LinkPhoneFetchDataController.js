@@ -3,6 +3,7 @@ import UserModel from "../../models/userData/UserDataModal.js";
 const LinkPhoneFetchDataController = async (req, res) => {
   try {
     const { phone } = req.body;
+    console.log("phone Number", phone);
 
     if (!phone) {
       return res.status(400).json({
@@ -18,13 +19,13 @@ const LinkPhoneFetchDataController = async (req, res) => {
         message: "This phone number is not linked with any user.",
         success: false,
       });
+    } else {
+      res.status(200).json({
+        message: "User data fetched successfully.",
+        success: true,
+        data: data,
+      });
     }
-
-    res.status(200).json({
-      message: "User data fetched successfully.",
-      success: true,
-      data: data,
-    });
   } catch (error) {
     console.error("Error in LinkPhoneFetchDataController:", error);
     res.status(500).json({
