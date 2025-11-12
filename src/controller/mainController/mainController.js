@@ -66,7 +66,6 @@ const mainController = async (req, res) => {
       }),
     ]);
 
-    // Helper to extract JSON safely
     const safeJson = async (res) => (res?.ok ? await res.json() : null);
 
     const data1 = await safeJson(res1.value);
@@ -222,6 +221,7 @@ const mainController = async (req, res) => {
     const PhoneData = await UserModel.find({
       User_Id: id,
     });
+    console.log(PhoneData);
     return res.status(200).json({
       data: {
         userDetails,
@@ -233,7 +233,7 @@ const mainController = async (req, res) => {
         castAndReligion,
         image,
         attandance: attendanceData?.data || null,
-        PhoneLinkData: PhoneData ? true : null,
+        PhoneLinkData: PhoneData.length > 0 ? true : null,
       },
       status: 200,
       message: "Success",
