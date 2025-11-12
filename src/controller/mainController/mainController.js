@@ -18,7 +18,7 @@ const fetchWithTimeout = (url, options, timeout = 8000) => {
 
 const mainController = async (req, res) => {
   const { id, token } = req.body.data;
-  const { username } = req.body.username;
+  console.log(req.body);
 
   if (!id || !token) {
     return res.status(400).json({
