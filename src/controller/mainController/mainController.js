@@ -17,7 +17,7 @@ const fetchWithTimeout = (url, options, timeout = 8000) => {
 };
 
 const mainController = async (req, res) => {
-  const { id, token } = req.body.data;
+  const { id, token, username } = req.body.data;
 
   if (!id || !token) {
     return res.status(400).json({
@@ -219,10 +219,8 @@ const mainController = async (req, res) => {
     };
 
     const PhoneData = await UserModel.find({
-      User_Id: id,
+      User_Id: username,
     });
-    console.log("id", id);
-    console.log(typeof id);
     return res.status(200).json({
       data: {
         userDetails,
