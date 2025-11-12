@@ -221,17 +221,7 @@ const mainController = async (req, res) => {
 
     const PhoneData = await UserModel.find({
       User_Id: id,
-    })
-      .then((res) => {
-        if (res) {
-          return true;
-        } else {
-          return false;
-        }
-      })
-      .catch(() => {
-        return false;
-      });
+    });
     return res.status(200).json({
       data: {
         userDetails,
@@ -243,7 +233,7 @@ const mainController = async (req, res) => {
         castAndReligion,
         image,
         attandance: attendanceData?.data || null,
-        PhoneLinkData: PhoneData,
+        PhoneLinkData: PhoneData ? true : null,
       },
       status: 200,
       message: "Success",
