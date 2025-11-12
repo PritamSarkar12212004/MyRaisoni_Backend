@@ -221,7 +221,7 @@ const mainController = async (req, res) => {
     const PhoneData = await UserModel.find({
       User_Id: id,
     });
-    console.log(PhoneData);
+    console.log("PhoneData", PhoneData);
     return res.status(200).json({
       data: {
         userDetails,
