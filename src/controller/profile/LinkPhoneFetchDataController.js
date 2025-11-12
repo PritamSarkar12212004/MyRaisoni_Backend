@@ -3,7 +3,6 @@ import UserModel from "../../models/userData/UserDataModal.js";
 const LinkPhoneFetchDataController = async (req, res) => {
   try {
     const { phone } = req.body;
-    console.log("phone Number", phone);
 
     if (!phone) {
       return res.status(400).json({
@@ -11,10 +10,7 @@ const LinkPhoneFetchDataController = async (req, res) => {
         success: false,
       });
     }
-
     const data = await UserModel.findOne({ User_phone: phone });
-    console.log("link Data", data);
-
     if (!data) {
       return res.status(404).json({
         message: "This phone number is not linked with any user.",
