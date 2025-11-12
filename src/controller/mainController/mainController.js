@@ -217,7 +217,7 @@ const mainController = async (req, res) => {
       casteName,
       categoryName,
     };
-
+    console.log("username", username);
     const PhoneData = await UserModel.find({
       User_Id: username,
     });
