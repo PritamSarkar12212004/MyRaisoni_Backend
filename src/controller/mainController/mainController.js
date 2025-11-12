@@ -233,7 +233,7 @@ const mainController = async (req, res) => {
         castAndReligion,
         image,
         attandance: attendanceData?.data || null,
-        PhoneLinkData: PhoneData.length > 0 ? true : null,
+        PhoneLinkData: PhoneData && PhoneData.length > 0 ? true : null,
       },
       status: 200,
       message: "Success",
